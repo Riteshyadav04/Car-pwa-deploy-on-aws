@@ -1,13 +1,15 @@
 version: 0.2
 
 phases:
+  install:
+    commands:
+      - echo Installing dependencies...
+      - npm install
   build:
     commands:
-    - echo "This is build phase... Zipping my webpage"
- 
-  post_build:
-    commands:
-    - echo "Deployed to S3"
+      - echo Build started on `date`
+      - npm run build
 artifacts:
   files:
     - '**/*'
+  name: build-output.zip
