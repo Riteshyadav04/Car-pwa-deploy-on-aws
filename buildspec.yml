@@ -3,11 +3,13 @@ version: 0.2
 phases:
   build:
     commands:
-    - echo "This is build phase... Zipping my webpage"
- 
+      - echo "This is build phase... Zipping my webpage"
+      - zip -r website.zip .   # Zip all files in current directory
+
   post_build:
     commands:
-    - echo "Deployed to S3"
+      - echo "Deployed to S3"
+
 artifacts:
   files:
-    - '/*'
+    - '**/*'   # Include all files in the artifact
